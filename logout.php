@@ -2,6 +2,6 @@
 // Menghapus session yang telah dibuat
 session_start();
 session_destroy();
-header('location: utama.php');
+header('location: index.php');
 
 ?>

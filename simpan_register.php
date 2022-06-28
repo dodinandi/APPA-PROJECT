@@ -23,7 +23,7 @@ $status="user";
   {
 	echo "<script>
 				alert('Anda Berhasil Registrasi !');
-				document.location='index.php';
+				document.location='login.php';
 		  </script>";
   }
   else 

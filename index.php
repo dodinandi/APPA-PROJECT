@@ -1,97 +1,146 @@
-<?php 
-include 'koneksi.php';
-?>
-
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" id="home">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+    <!-- My CSS -->
+    <link rel="stylesheet" href="style.css" />
 
-
-    <title>Halaman Login</title>
+    <title>APPA PROJECT | Photography</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
   </head>
   <body>
-  <!-- Form Login -->
-    <div class="container">
-      <h4 class="text-center">APPA PROJECT</h4>
-      <hr>
-      <form method="POST" action="">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Username</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-user"></i></div>
-              </div>
-              <input type="text" class="form-control" placeholder="Masukkan Username" name="username">
-            </div>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
-              </div>
-              <input type="password" class="form-control" placeholder="Masukkan Password" name="password">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#home">APPA PROJECT PHOTOGRAPHY</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#galery">Galery</a>
+            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link text-primary" href="register.php">Regist</a>
+            <a class="btn btn-primary" href="login.php">Login</a>
           </div>
         </div>
+      </div>
+    </nav>
 
-        <button type="submit" name="submit" class="btn btn-primary">LOGIN</button>
-        <button type="reset" name="reset" class="btn btn-danger">RESET</button>
-      </form>
-  <!-- Akhir Form Login -->
+    <!-- akhir navbar -->
 
-  <!-- Eksekusi Form Login -->
-      <?php 
-        if(isset($_POST['submit'])) {
-          $user = $_POST['username'];
-          $password = $_POST['password'];
+    <!-- Jumbotron -->
+    <section class="jumbotron text-center p-3 mt-5 text-light  bg-secondary">
+      <img src="img/cam.jpg" alt="Appa Project" width="300" class="rounded-circle img-thumbnail" />
+      <div class="socialmedia mt-3">
+        <a href="https://www.instagram.com/dodinandi/" target="_blank" class="insta"><i class="bi bi-instagram text-danger"></i></a>
+      </div>
+      <h1 class="display-4">PHOTOGRAPHY</h1>
+      <p class="lead">WEDDING | GRADUATION | TRAVELLING</p>
+    </section>
 
-          // Query untuk memilih tabel
-          $cek_data = mysqli_query($koneksi, "SELECT * FROM user WHERE username = '$user' AND password = '$password'");
-          $hasil = mysqli_fetch_array($cek_data);
-          $status = $hasil['status'];
-          $login_user = $hasil['username'];
-          $row = mysqli_num_rows($cek_data);
+    <!-- akhir Jumbotron -->
 
-          // Pengecekan Kondisi Login Berhasil/Tidak
-            if ($row > 0) {
-                session_start();   
-                $_SESSION['login_user'] = $login_user;
+    <!-- About  -->
+    <section id="about">
+      <div class="container">
+        <div class="row text-center mt-5">
+          <div class="col">
+            <h2>About</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center fs-6 text-center">
+          <div class="col-md-4 mb-5">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum pariatur ducimus facere iure ipsum reprehenderit nemo consequatur laudantium, veritatis dolore.</p>
+          </div>
+          <div class="col-md-4 mb-5">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit fuga, laudantium similique repudiandae dolor deleniti maxime non illo quas qui! Cum quam ducimus alias quo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                if ($status == 'admin') {
-                  header('location: admin.php');
-                }elseif ($status == 'user') {
-                  header('location: user.php'); 
-                }
-            }else{
-                header("location: login.php");
-            }
-        }
-       ?>
-    </div>
-  <!-- Akhir Eksekusi Form Login -->
+    <!-- Akhir About -->
 
+    <!-- Galery  -->
+    <section id="galery">
+      <div class="con bg-secondary text-dark mt-5">
+        <div class="row text-center text-light mb-3">
+          <div class="col">
+            <h2>Galery</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-3 mb-3">
+            <div class="card">
+              <img src="img/project/w.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card">
+              <img src="img/project/g.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card">
+              <img src="img/project/t.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Akhir Galery  -->
 
+    <!-- Contact -->
+    <section id="contact">
+      <div class="con mt-5">
+        <div class="row text-center">
+          <div class="col">
+            <h2>Contact Me</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="email" />
+              </div>
+              <div class="mb-3">
+                <label for="pesan" class="form-label">Pesan</label>
+                <textarea class="form-control" id="pesan" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary mb-5">Kirim</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Akhir Contact -->
 
-
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-shadow navbar-dark">
+      <p>Created with <i class="bi bi-instagram text-danger"></i> by <a href="https://www.instagram.com/dodinandi/" class="text-white fw-bold">Dodi Hernandi</a></p>
+    </footer>
+    <!-- Akhir Footer -->
   </body>
 </html>
