@@ -59,9 +59,13 @@ $result = mysqli_fetch_all($ambil, MYSQLI_ASSOC);
           <input type="text" class="form-control" id="harga1" name="harga" value="<?php echo $result[0]['harga'] ?>">
         </div>
         <div class="form-group">
-          <label for="gambar">Foto Menu</label>
+          <label for="gambar">Foto</label>
           <input type="file" class="form-control-file border" id="gambar" name="gambar">
-        </div><br>
+        </div>
+        <div class="form-group">
+          <label for="gambar">Foto Menu</label></br>
+          <img src="upload/<?php echo $result[0]['gambar'] ?>"alt="..." height="150px" width="150px">
+        </div></br>
         <button type="submit" class="btn btn-primary" name="tambah">Edit</button>
         <button type="reset" class="btn btn-danger" name="reset">Hapus</button>
         <a href="daftar_menu_graduation.php">

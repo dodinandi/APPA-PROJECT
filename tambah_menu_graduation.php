@@ -66,12 +66,15 @@ include 'koneksi.php';
     $nama = $_POST['nama'];
     $tempat = $_POST['tempat'];
     $harga = $_POST['harga'];
+    // $stok = $_POST['stok'];
     $nama_file = $_FILES['gambar']['name'];
     $source = $_FILES['gambar']['tmp_name'];
-    $folder = './upload/';
+    // $folder = '/upload/';
 
     move_uploaded_file($source, $folder.$nama_file);
-    $insert = mysqli_query($koneksi, "INSERT INTO graduation VALUES (NULL, '$nama', '$harga', '$nama_file', ' $tempat ')");
+
+    // $filepath = '/upload/'.$nama_file;
+    $insert = mysqli_query($koneksi, "INSERT INTO graduation VALUES (NULL, '$nama','$harga', '$nama_file', ' $tempat ')");
 
     if($insert){
       header("location: daftar_menu_graduation.php");
