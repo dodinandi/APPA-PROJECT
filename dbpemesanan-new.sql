@@ -11,7 +11,7 @@
  Target Server Version : 100422
  File Encoding         : 65001
 
- Date: 29/06/2022 21:03:10
+ Date: 29/06/2022 21:14:09
 */
 
 SET NAMES utf8mb4;
@@ -74,16 +74,18 @@ CREATE TABLE `pemesanan_produk`  (
 DROP TABLE IF EXISTS `travelling`;
 CREATE TABLE `travelling`  (
   `id_menu` int NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `stok` int NOT NULL,
+  `nama` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `harga` int NOT NULL,
-  `gambar` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `gambar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `tempat` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_menu`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of travelling
 -- ----------------------------
+INSERT INTO `travelling` VALUES (1, 'Paket Travelling', 5000000, 'pc-wallpaper-4k-6.jpg', ' kota tua ');
+INSERT INTO `travelling` VALUES (3, 'Sosis Kimbo', 55500000, 'photo_2022-01-24_14-43-41.jpg', ' pik 2 ');
 
 -- ----------------------------
 -- Table structure for user
